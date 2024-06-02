@@ -10,8 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_broth")
-public class Broth {
+@Table(name = "tb_protein")
+public class Protein {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,17 +26,17 @@ public class Broth {
 	@Column(name = "name")
 	private String name;
 	
-	@Column(columnDefinition = "TEXT")
+	@Column(name = "description",columnDefinition = "TEXT")
 	private String description;
 	
 	@Column(name = "price")
-	private Number price; 
+	private Number price;
 	
-	public Broth() {
+	public Protein() {
 		
 	}
 
-	public Broth(Long id, String imageInactive, String imageActive, String name, String description, Number price) {
+	public Protein(Long id, String imageInactive, String imageActive, String name, String description, Number price) {
 		this.id = id;
 		this.imageInactive = imageInactive;
 		this.imageActive = imageActive;
@@ -106,14 +106,9 @@ public class Broth {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Broth other = (Broth) obj;
+		Protein other = (Protein) obj;
 		return Objects.equals(id, other.id);
 	}
 	
-	
-	
-	
-
-
 
 }
