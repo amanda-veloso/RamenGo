@@ -7,21 +7,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity   
 @Table(name = "tb_order")
 public class Order {
 	
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name = "broth_id")
-	private Long brothId;
+	@ManyToOne
+	@JoinColumn(name = "id_broth")
+	private Broth broth;
 	
-	@Column(name = "protein_id")
-	private Long proteinId;
+	@ManyToOne
+	@JoinColumn(name = "id_protein")
+	private Protein protein;
+	
+	@Column(name = "code_order")
+	private String codeOrder;
 	
 	@Column(name = "description")
 	private String description;
@@ -34,11 +41,11 @@ public class Order {
 		
 	}
 
-	public Order(Long id, Long brothId, Long proteinId, String description, String image) {
-		super();
+	public Order(Long id, Broth broth, Protein protein, String codeOrder, String description, String image) {
 		this.id = id;
-		this.brothId = brothId;
-		this.proteinId = proteinId;
+		this.broth = broth;
+		this.protein = protein;
+		this.codeOrder = codeOrder;
 		this.description = description;
 		this.image = image;
 	}
@@ -51,20 +58,28 @@ public class Order {
 		this.id = id;
 	}
 
-	public Long getBrothId() {
-		return brothId;
+	public Broth getBroth() {
+		return broth;
 	}
 
-	public void setBrothId(Long brothId) {
-		this.brothId = brothId;
+	public void setBroth(Broth broth) {
+		this.broth = broth;
+	}
+	
+	public String getCodeOrder() {
+		return codeOrder;
 	}
 
-	public Long getProteinId() {
-		return proteinId;
+	public void setCodeOrder(String codeOrder) {
+		this.codeOrder = codeOrder;
 	}
 
-	public void setProteinId(Long proteinId) {
-		this.proteinId = proteinId;
+	public Protein getProtein() {
+		return protein;
+	}
+
+	public void setProtein(Protein protein) {
+		this.protein = protein;
 	}
 
 	public String getDescription() {

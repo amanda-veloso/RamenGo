@@ -1,5 +1,6 @@
 package com.redventures.ramengo.entities;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -14,7 +15,7 @@ import jakarta.persistence.Table;
 public class Broth {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@Column(name = "image_inactive")
@@ -30,13 +31,13 @@ public class Broth {
 	private String description;
 	
 	@Column(name = "price")
-	private Number price; 
+	private BigDecimal price; 
 	
 	public Broth() {
 		
 	}
 
-	public Broth(Long id, String imageInactive, String imageActive, String name, String description, Number price) {
+	public Broth(Long id, String imageInactive, String imageActive, String name, String description, BigDecimal price) {
 		this.id = id;
 		this.imageInactive = imageInactive;
 		this.imageActive = imageActive;
@@ -89,7 +90,7 @@ public class Broth {
 		return price;
 	}
 
-	public void setPrice(Number price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
